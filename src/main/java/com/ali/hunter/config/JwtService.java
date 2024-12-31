@@ -31,6 +31,8 @@ public class JwtService {
             String email = extractClaim(token, Claims::getSubject);
             return email;
         } catch (Exception e) {
+
+            System.out.println("Error extracting email: " + e.getMessage());
             System.out.println("Error extracting email: " + e.getMessage());
             throw e;
         }
