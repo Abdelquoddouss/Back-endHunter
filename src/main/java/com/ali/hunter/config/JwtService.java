@@ -14,6 +14,7 @@ import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.function.Function;
 
 @Service
@@ -40,6 +41,7 @@ public class JwtService {
 
     public String generateToken(Map<String , Object> extraClaims , UserDetails userDetails) {
         extraClaims.put("role", getRole(userDetails.getUsername()));
+        extraClaims.put("id", getId(userDetails.getUsername()));
         return Jwts.builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
@@ -52,6 +54,9 @@ public class JwtService {
 
     public String getRole(String email){
          return userRepository.findByEmail(email).get().getRole().name();
+    }
+    public UUID getId(String email){
+         return userRepository.findByEmail(email).get().getId();
     }
     public String generateToken(UserDetails userDetails){
         return generateToken(new HashMap<>(), userDetails);

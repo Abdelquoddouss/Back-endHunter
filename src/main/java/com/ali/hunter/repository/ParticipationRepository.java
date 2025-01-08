@@ -38,4 +38,6 @@ public interface ParticipationRepository extends JpaRepository<Participation, UU
     Page<Participation> findParticipationByUser(User user, Pageable pageable);
 
     List<Participation> findByCompetitionOrderByScoreDesc(Competition competition);
+
+    boolean existsByUserAndCompetition(User user, Competition competition);
 }

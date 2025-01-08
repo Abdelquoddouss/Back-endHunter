@@ -1,5 +1,6 @@
 package com.ali.hunter.repository.dto;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,7 @@ public class CompetitionRepoDTO {
     private LocalDateTime date;
 
     private Integer participationCount;
+    private Integer minParticipants;
+
+    private Integer maxParticipants;
 }

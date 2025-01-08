@@ -59,6 +59,11 @@ public class ParticipationService {
             throw new RegistrationClosedException(" Registration is closed");
         }
 
+        boolean alreadyRegistered = participationRepository.existsByUserAndCompetition(user, competition);
+        if (alreadyRegistered) {
+            throw new RegistrationClosedException("User is already registered for this competition");
+        }
+
         Participation participation1 = Participation.builder()
                 .user(user)
                 .competition(competition)

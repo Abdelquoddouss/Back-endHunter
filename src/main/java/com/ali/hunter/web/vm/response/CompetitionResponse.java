@@ -22,6 +22,8 @@ public class CompetitionResponse {
 
     private LocalDateTime date;
 
+
+
     private Integer participationCount = 0;
 
 
